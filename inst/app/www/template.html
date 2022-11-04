@@ -1,0 +1,178 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>W3.CSS Template</title>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Montserrat">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+<style>
+body, h1,h2,h3,h4,h5,h6 {font-family: "Montserrat", sans-serif}
+.w3-row-padding img {margin-bottom: 12px}
+/* Set the width of the sidebar to 120px */
+.w3-sidebar {width: 120px;background: #222;}
+/* Add a left margin to the "page content" that matches the width of the sidebar (120px) */
+#main {margin-left: 120px}
+/* Remove margins from "page content" on small screens */
+@media only screen and (max-width: 600px) {#main {margin-left: 0}}
+</style>
+</head>
+<body class="w3-black">
+
+<!-- Icon Bar (Sidebar - hidden on small screens) -->
+<nav class="w3-sidebar w3-bar-block w3-small w3-hide-small w3-center">
+  
+  <!-- Avatar image in top left corner -->
+  <img src="/w3images/avatar_smoke.jpg" style="width:100%">
+  
+  <a href="#" class="w3-bar-item w3-button w3-padding-large w3-black">
+    <i class="fa fa-home w3-xxlarge"></i>
+    <p>HOME</p>
+  </a>
+  
+  <a href="#about" class="w3-bar-item w3-button w3-padding-large w3-hover-black">
+    <i class="fa fa-navicon w3-xxlarge"></i>
+    <p>ABOUT</p>
+  </a>
+  
+  <a href="#usage" class="w3-bar-item w3-button w3-padding-large w3-hover-black">
+    <i class="fa fa-cogs w3-xxlarge"></i>
+    <p>USAGE</p>
+  </a>
+  
+  <a href="#import" class="w3-bar-item w3-button w3-padding-large w3-hover-black">
+    <i class="fa fa-cloud-upload w3-xxlarge"></i>
+    <p>IMPORT</p>
+  </a>
+  
+  <a href="#simulate" class="w3-bar-item w3-button w3-padding-large w3-hover-black">
+    <i class="fa fa-magic w3-xxlarge"></i>
+    <p>SIMULATE</p>
+  </a>
+  
+  <a href="#visualize" class="w3-bar-item w3-button w3-padding-large w3-hover-black">
+    <i class="fa fa-line-chart w3-xxlarge"></i>
+    <p>VISUALIZE</p>
+  </a>
+  
+  <a href="#export" class="w3-bar-item w3-button w3-padding-large w3-hover-black">
+    <i class="fa fa-cloud-download w3-xxlarge"></i>
+    <p>EXPORT</p>
+  </a>
+  
+</nav>
+
+<!-- Navbar on small screens (Hidden on medium and large screens) -->
+<div class="w3-top w3-hide-large w3-hide-medium" id="myNavbar">
+  <div class="w3-bar w3-black w3-opacity w3-hover-opacity-off w3-center w3-small">
+    <a href="#" class="w3-bar-item w3-button" style="width:25% !important">HOME</a>
+    <a href="#usage" class="w3-bar-item w3-button" style="width:25% !important">USAGE</a>
+    <a href="#import" class="w3-bar-item w3-button" style="width:25% !important">IMPORT</a>
+    <a href="#simulate" class="w3-bar-item w3-button" style="width:25% !important">SIMULATE</a>
+    <a href="#visualize" class="w3-bar-item w3-button" style="width:25% !important">VISUALIZE</a>
+    <a href="#export" class="w3-bar-item w3-button" style="width:25% !important">EXPORT</a>
+  </div>
+</div>
+
+<!-- Page Content -->
+<div class="w3-padding-large" id="main">
+  <!-- Header/Home -->
+  <header class="w3-container w3-padding-32 w3-center w3-black" id="home">
+    <h1 class="w3-jumbo"><span class="w3-hide-small">stable.</h1>
+
+    <p>Understanding synchrony-stability relationships in complex natural systems</p>
+
+    <div style = "margin-left:3em; margin-right:3em;margin-top:0em;margin-bottom:2em;">
+      <img src="./www/sync_biomass.gif" style="width:80%; height: auto;">
+      </div>
+
+  </header>
+
+  <!-- About Section -->
+  <div class="w3-content w3-justify w3-text-grey w3-padding-64" id="about">
+    <h2 class="w3-text-light-grey"></h2>
+    <hr style="width:200px" class="w3-opacity">
+    <h1 class="w3-xxlarge"><span class="w3-hide-small">Background and rationale</h1>
+    
+    <p>Ecosystems, like portfolios of financial assets, are complex hierarchical systems whose components fluctuate through time. These components include <i>populations or communities across multiple spatial scales</i>. For instance, we could think about how populations fluctuate locally within a community or about how communities fluctuate regionally within a metacommunity. Alternatively, species' populations fluctuating across a region form a metapopulation, and multiple metapopulations within a region together form a metacommunity.
+    </p>
+    
+    <p>As ecosystem components fluctuate, their dynamics tend to offset. This is called <i>asynchrony</i>, and results in the dynamics of higher-level ecosystem components being less variable over time than their component parts. For example, the temporal variability of metapopulation dynamics will be reduced relative to the dynamics of its component populations due to asynchrony. The reduction in variability at aggregate levels of complexity in an ecosystem is called the <i>portfolio effect (PE)</i>. The magnitude of the PE scales with synchrony (&phi;), a measure of how correlated component dynamics are through time, where PE = 1 - &phi;.</p> 
+    
+    <p>In populations or communities subjected to resource harvesting, management strategies that conserve PEs are desirable as they function as "ecological insurance". In this sense, PEs may reduce variability in the extraction of resources through time. The purpose of this tool is to aid in the visualization and understanding of PEs as they manifest at different biological and organizational levels within ecosystems.</p>
+    </div>
+    
+    
+   <!-- Usage Section -->
+   <div class="w3-content w3-justify w3-text-grey w3-padding-64" id="usage">
+    <h2 class="w3-text-light-grey"></h2>
+    <hr style="width:200px" class="w3-opacity">
+    <h1 class="w3-xxlarge"><span class="w3-hide-small">Usage</h1>
+    
+    <p>The functionality of {stable} reflects the idea that synchrony-stability relationships are general properties of complex systems. Therefore, it does not require that the user have data specific to ecosystem properites such as biomass or abundance. However, it is perhaps best suited to these types of data.</p>
+    </div>
+    
+    <!-- Data import section -->
+    <div class="w3-content w3-justify w3-text-grey w3-padding-64" id="import">
+      <h2 class="w3-text-light-grey"></h2>
+      <hr style="width:200px" class="w3-opacity">
+      <h1 class="w3-xxlarge"><span class="w3-hide-small">Import</h1>
+
+        {{first}}
+
+    </div>
+    
+    <!-- Data simulation section -->
+    <div class="w3-content w3-justify w3-text-grey w3-padding-64" id="import">
+      <h2 class="w3-text-light-grey"></h2>
+      <hr style="width:200px" class="w3-opacity">
+      <h1 class="w3-xxlarge"><span class="w3-hide-small">Simulate</h1>
+
+    </div>
+    
+    <!-- Visualization section -->    
+    <div class="w3-content w3-justify w3-text-grey w3-padding-64" id="visualize">
+      <h2 class="w3-text-light-grey"></h2>
+      <hr style="width:200px" class="w3-opacity">
+      <h1 class="w3-xxlarge"><span class="w3-hide-small">Visualize</h1>
+
+    </div>
+    
+    <!-- Export section -->    
+    <div class="w3-content w3-justify w3-text-grey w3-padding-64" id="export">
+      <h2 class="w3-text-light-grey"></h2>
+      <hr style="width:200px" class="w3-opacity">
+      <h1 class="w3-xxlarge"><span class="w3-hide-small">Export</h1>
+
+    </div>
+    
+    
+</div>
+
+
+<script>
+
+// add bootstrap table styles to pandoc tables
+function bootstrapStylePandocTables() {
+  $('tr.odd').parent('tbody').parent('table').addClass('table table-condensed');
+}
+$(document).ready(function () {
+  bootstrapStylePandocTables();
+});
+
+
+</script>
+
+
+<script>
+  (function () {
+    var script = document.createElement("script");
+    script.type = "text/javascript";
+    script.src  = "https://mathjax.rstudio.com/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML";
+    document.getElementsByTagName("head")[0].appendChild(script);
+  })();
+</script>
+
+</body>
+</html>

@@ -8,9 +8,10 @@ app_ui <- function(request) {
   tagList(
     # Leave this function for adding external resources
     golem_add_external_resources(),
-    # Your application UI logic
-    fluidPage(
-      h1("stable")
+    # List the first level UI elements here 
+    htmlTemplate(
+      app_sys("app/www/template.html"), 
+      first = mod_data_import_ui("mod_data_import_ui")
     )
   )
 }
