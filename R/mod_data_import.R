@@ -38,7 +38,7 @@ mod_data_import_ui <- function(id){
     
   fluidRow(
     column(4, 
-           fileInput(ns("file1"), "Choose CSV File",
+           fileInput(ns("file1"), "1. Choose CSV file:",
                      accept = c(
                        "text/csv",
                        "text/comma-separated-values,text/plain",
@@ -50,43 +50,42 @@ mod_data_import_ui <- function(id){
         )
     ),
   br(),
+  shiny::h6("2. Enter column names:"),
   fluidRow(
-  shinydashboard::box(width = 10,
-     shiny::splitLayout(
+    shinydashboard::box(width = 12,
+      splitLayout(cellWidths = c("50%","50%"),
           shiny::textInput(
-            ns("nspecies"),
-            "Number of species:",
+            ns("loc_col"),
+            HTML("Locations:<br>"),
             ""
           ),
           shiny::textInput(
             ns("spec_col"),
-            "Name of species column:",
+            HTML("Species:<br>"),
             ""
-          )
-        )
-    )
-  ),
-  br(),
-  fluidRow(
-    shinydashboard::box(width = 10,
-        shiny::splitLayout(
-            shiny::textInput(
-             ns("npatches"),
-             "Number of patches:",
-             ""
-           ),
-           shiny::splitLayout(
-             shiny::textInput(
-               ns("patch_col"),
-               "Name of patches column:",
-               ""
-             )
-          )
         )
       )
+      )
+    ),
+  br(),
+  fluidRow(
+    shinydashboard::box(width = 12,
+      splitLayout(cellWidths = c("50%","50%"),
+        shiny::textInput(
+          ns("time_col"),
+          HTML("Time:<br>"),
+          ""
+        ),
+        shiny::textInput(
+          ns("prop_col"),
+          HTML("Ecosystem property:<br>"),
+          ""
+         )
+        )
+       )
+      )
     )
-  )
-}
+  }
     
 #' data_import Server Functions
 #'
@@ -118,10 +117,10 @@ mod_data_import_server <- function(id){
     
     return(
       list(
-        nspecies = reactive({ input$nspecies }),
         spec_col_name = reactive({ input$spec_col }),
-        npatches = reactive({ input$npatches }),
-        patch_col_name = reactive({ input$patch_col })
+        patch_col_name = reactive({ input$patch_col }),
+        loc_col_name = reactive({ input$loc_col }),
+        eco_col_name = reactive({ input$prop_col })
       )
     )
 

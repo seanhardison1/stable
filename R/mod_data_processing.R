@@ -18,7 +18,7 @@ mod_data_processing_ui <- function(id){
 #'
 #' @noRd 
 mod_data_processing_server <- function(id){
-  moduleServer( id, function(input, output, session){
+  moduleServer( id, function(input, output, session, first){
     ns <- session$ns
     output$plot <- renderPlot({
       shinipsum::random_ggplot()
