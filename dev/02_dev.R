@@ -26,6 +26,7 @@ download.file("https://golemverse.org/img/golem-hex_250.png", "inst/app/www/gole
 ## Add one line by package you want to add as dependency
 usethis::use_package( "shinipsum" )
 usethis::use_package( "dplyr" )
+usethis::use_package(" tidyr ")
 usethis::use_package( "plotly" )
 usethis::use_package( "DT" )
 

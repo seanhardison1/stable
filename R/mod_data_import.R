@@ -83,7 +83,29 @@ mod_data_import_ui <- function(id){
          )
         )
        )
-      )
+      ),
+  br(),
+  fluidRow(
+    shinydashboard::box(width = 12,
+                        splitLayout(cellWidths = c("50%","50%"),
+                                    shiny::textInput(
+                                      ns("lat_col"),
+                                      HTML("Latitude:<br>"),
+                                      "latitude"
+                                    ),
+                                    shiny::textInput(
+                                      ns("long_col"),
+                                      HTML("Longitude:<br>"),
+                                      "longitude"
+                                    )
+                        )
+    )
+  ),
+  br(),
+  fluidRow(
+    shiny::actionButton(ns("act1"),
+                        "Enter column names", class = "btn-success")
+  )
     )
   }
     
@@ -115,12 +137,33 @@ mod_data_import_server <- function(id){
                     options = list(pageLength = 5, lengthChange = FALSE)) 
     })
     
+    # actionButton will trigger next section and pass df to 
+    # metacomm partitioning module
+    # fct_lamy_mc_part(Y, s, t)
+    # browser()
+    # df() %>%  
+    #   ungroup() %>% 
+    #   dplyr::select(grp = 
+    #                   input$loc_col, 
+    #                 common = 
+    #                   input$spec_col, 
+    #                 year = 
+    #                   input$time_col, 
+    #                 est = 
+    #                   input$prop_col) %>% 
+    #   tidyr::spread(common, est, fill = 0) %>% 
+    #   ungroup() %>% 
+    #   arrange(grp, year)
+    
     return(
       list(
         spec_col_name = reactive({ input$spec_col }),
-        patch_col_name = reactive({ input$patch_col }),
+        time_col_name = reactive({ input$time_col }),
         loc_col_name = reactive({ input$loc_col }),
-        eco_col_name = reactive({ input$prop_col })
+        eco_col_name = reactive({ input$prop_col }),
+        lat_col_name = reactive({ input$lat_col }),
+        long_col_name = reactive({ input$long_col })#,
+        # df = df()
       )
     )
 

@@ -11,7 +11,8 @@ app_ui <- function(request) {
     # List the first level UI elements here 
     htmlTemplate(
       app_sys("app/www/template.html"), 
-      first = mod_data_import_ui("mod_data_import_ui")
+      first = mod_data_import_ui("mod_data_import_ui"),
+      second = mod_data_processing_ui(" mod_data_processing_ui")
     )
   )
 }
