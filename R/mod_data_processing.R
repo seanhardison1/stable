@@ -10,19 +10,33 @@
 mod_data_processing_ui <- function(id){
   ns <- NS(id)
   tagList(
+    shinyjs::useShinyjs(),
     plotOutput(ns("plot"))
+    # plotOutput(ns("fig1"))
   )
 }
     
 #' data_processing Server Functions
 #'
 #' @noRd 
-mod_data_processing_server <- function(id){
-  moduleServer( id, function(input, output, session, first){
+mod_data_processing_server <- function(id, df){
+  moduleServer( id, function(input, output, session){
     ns <- session$ns
-    output$plot <- renderPlot({
-      shinipsum::random_ggplot()
+    
+    observe({
+      if (is.null(df$df_data())) {
+        shinyjs::hide("plot")
+      } else {
+        shinyjs::show("plot")
+      }
     })
+    output$plot <- renderPlot({
+      if (!is.null(df$df_data())) {
+        ggplot2::ggplot(df$df_data()) +
+          ggplot2::geom_histogram(ggplot2::aes(`Atlantic croaker`))
+      } 
+    })
+   
   })
 }
     

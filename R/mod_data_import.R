@@ -35,7 +35,7 @@ mod_data_import_ui <- function(id){
                     }
                    "
     )),
-    
+  shinyjs::useShinyjs(), 
   fluidRow(
     column(4, 
            fileInput(ns("file1"), "1. Choose CSV file:",
@@ -45,9 +45,9 @@ mod_data_import_ui <- function(id){
                        ".csv")
            )
         ),
-    column(8, 
+    column(8,
            DT::DTOutput(ns('dt'))
-        )
+        ),
     ),
   br(),
   shiny::h6("2. Enter column names:"),
@@ -57,12 +57,12 @@ mod_data_import_ui <- function(id){
           shiny::textInput(
             ns("loc_col"),
             HTML("Locations:<br>"),
-            ""
+            "grp"
           ),
           shiny::textInput(
             ns("spec_col"),
             HTML("Species:<br>"),
-            ""
+            "common"
         )
       )
       )
@@ -74,12 +74,12 @@ mod_data_import_ui <- function(id){
         shiny::textInput(
           ns("time_col"),
           HTML("Time:<br>"),
-          ""
+          "year"
         ),
         shiny::textInput(
           ns("prop_col"),
           HTML("Ecosystem property:<br>"),
-          ""
+          "est"
          )
         )
        )
@@ -104,7 +104,8 @@ mod_data_import_ui <- function(id){
   br(),
   fluidRow(
     shiny::actionButton(ns("act1"),
-                        "Enter column names", class = "btn-success")
+                        "Enter column names", 
+                        class = "btn-success")
   )
     )
   }
@@ -115,58 +116,56 @@ mod_data_import_ui <- function(id){
 mod_data_import_server <- function(id){
   moduleServer( id, function(input, output, session){
     ns <- session$ns
-
+    
     df <- reactive({
       file <- input$file1
       ext <- tools::file_ext(file$datapath)
-      
+
       req(file)
       validate(need(ext == "csv", "Please upload a csv file"))
-      
+
       read.csv(file$datapath)
     })
+
     
     output$dt <- DT::renderDT({
-      
+
       # render only if there is data available
       req(df())
-      
+
       # reactives are only callable inside an reactive context like render
-      DT::datatable(df() %>% 
+      DT::datatable(df() %>%
                       dplyr::mutate_if(is.numeric, round, 3),
-                    options = list(pageLength = 5, lengthChange = FALSE)) 
+                    options = list(pageLength = 5, lengthChange = FALSE))
     })
     
-    # actionButton will trigger next section and pass df to 
-    # metacomm partitioning module
-    # fct_lamy_mc_part(Y, s, t)
-    # browser()
-    # df() %>%  
-    #   ungroup() %>% 
-    #   dplyr::select(grp = 
-    #                   input$loc_col, 
-    #                 common = 
-    #                   input$spec_col, 
-    #                 year = 
-    #                   input$time_col, 
-    #                 est = 
-    #                   input$prop_col) %>% 
-    #   tidyr::spread(common, est, fill = 0) %>% 
-    #   ungroup() %>% 
-    #   arrange(grp, year)
-    
-    return(
-      list(
-        spec_col_name = reactive({ input$spec_col }),
-        time_col_name = reactive({ input$time_col }),
-        loc_col_name = reactive({ input$loc_col }),
-        eco_col_name = reactive({ input$prop_col }),
-        lat_col_name = reactive({ input$lat_col }),
-        long_col_name = reactive({ input$long_col })#,
-        # df = df()
-      )
-    )
+    values <- reactiveValues(df_data = NULL)
+    observeEvent(input$act1, {
 
+      if (any(input$loc_col == ""|
+              input$spec_col == ""|
+              input$time_col == ""|
+              input$prop_col == "")){
+        shinyjs::alert("Missing variable name.")
+      } else {
+        values$df_data <- 
+          df() %>%
+          dplyr::select(grp =
+                          input$loc_col,
+                        common =
+                          input$spec_col,
+                        year =
+                          input$time_col,
+                        est =
+                          input$prop_col) %>%
+          tidyr::spread(common, est, fill = 0) %>%
+          dplyr::arrange(grp, year)
+        
+      }
+    })
+    
+    return(list(df_data = reactive( values$df_data )))
+    
   })
   
 }

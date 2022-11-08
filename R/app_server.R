@@ -6,5 +6,9 @@
 #' @noRd
 app_server <- function(input, output, session) {
   # Your application server logic
-  mod_data_import_server("mod_data_import_ui")
+  
+  df <- mod_data_import_server("data_import_1")
+  
+  mod_data_processing_server("data_processing_1", df)
+  
 }
