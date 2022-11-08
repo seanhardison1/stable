@@ -14,7 +14,8 @@ Imports:
     golem (>= 0.3.5),
     plotly,
     shinipsum,
-    shiny (>= 1.7.2)
+    shiny (>= 1.7.2),
+    patchwork
 Suggests: 
     spelling,
     testthat (>= 3.0.0)

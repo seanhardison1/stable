@@ -384,6 +384,9 @@ make_action_button <- function(tag, inputId = NULL) {
 #' #' @importFrom rmarkdown render
 #' #' @importFrom markdown markdownToHTML
 #' #' @importFrom shiny HTML
+#' #' @import ggplot2
+#' #' @import patchwork
+#' 
 #' includeRMarkdown <- function(path){
 #'
 #'   md <- tempfile(fileext = '.md')

@@ -32,8 +32,51 @@ mod_data_processing_server <- function(id, df){
     })
     output$plot <- renderPlot({
       if (!is.null(df$df_data())) {
-        ggplot2::ggplot(df$df_data()) +
-          ggplot2::geom_histogram(ggplot2::aes(`Atlantic croaker`))
+        
+        # browser()
+        mp_df <- df$long_df() %>% 
+          dplyr::group_by(year, common) %>% 
+          dplyr::summarise(est = sum(est))
+        
+        tg_df <- df$long_df() %>% 
+          dplyr::group_by(year, grp) %>% 
+          dplyr::summarise(est = sum(est))
+        
+        browser()
+        mp_plt <- 
+          ggplot(mp_df) +
+          geom_area(aes(y = est, x = year, 
+                                          group = common,
+                                          fill = common)) +
+          ggsci::scale_fill_igv() +
+          labs(y = df$prop_col_name(),
+               x = df$time_col_name()) +
+          guides(fill = guide_legend(nrow = 3)) +
+          scale_x_continuous(expand = c(0.01, 0.01)) +
+          scale_y_continuous(expand = c(0.01, 0.01)) +
+          theme_stable() +
+          theme(legend.title = element_blank())
+        
+        tg_plt <-
+          ggplot(tg_df) +
+          geom_area(aes(y = est, x = year, 
+                                          group = grp,
+                                          fill = grp)) +
+          ggsci::scale_fill_material() +
+          labs(y = df$prop_col_name(),
+               x = df$time_col_name(),
+               fill = df$loc_col_name()) +
+          scale_x_continuous(expand = c(0.01, 0.01)) +
+          scale_y_continuous(expand = c(0.01, 0.01)) +
+          theme_stable() +
+          theme(axis.title.y = element_blank(),
+                axis.text.y = element_blank())
+         
+        mp_plt + tg_plt + 
+          patchwork::plot_layout(nrow = 1) &
+          plot_annotation(theme = 
+                            theme(plot.background = element_rect(fill ="black")))
+        
       } 
     })
    

@@ -139,7 +139,8 @@ mod_data_import_server <- function(id){
                     options = list(pageLength = 5, lengthChange = FALSE))
     })
     
-    values <- reactiveValues(df_data = NULL)
+    values <- reactiveValues(df_data = NULL, 
+                             long_df = NULL)
     observeEvent(input$act1, {
 
       if (any(input$loc_col == ""|
@@ -158,13 +159,21 @@ mod_data_import_server <- function(id){
                           input$time_col,
                         est =
                           input$prop_col) %>%
+          {. ->> long_df} %>% 
           tidyr::spread(common, est, fill = 0) %>%
           dplyr::arrange(grp, year)
+        
+        values$long_df <- long_df
         
       }
     })
     
-    return(list(df_data = reactive( values$df_data )))
+    return(list(df_data = reactive( values$df_data ),
+                long_df = reactive( values$long_df ),
+                prop_col_name = reactive( input$prop_col ),
+                time_col_name = reactive( input$time_col ),
+                spec_col_name = reactive( input$spec_col ),
+                loc_col_name = reactive( input$loc_col )))
     
   })
   
