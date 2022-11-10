@@ -59,6 +59,13 @@ mod_data_processing_server <- function(id, df){
           dplyr::group_by(year) %>% 
           dplyr::mutate(total = sum(est),
                         perc = est/total) 
+        
+        is_dis <- if (is.numeric(df$df_data() %>% dplyr::pull(grp))){
+          scle <- viridis::scale_fill_viridis(discrete = F)
+        } else {
+          scle <- viridis::scale_fill_viridis(discrete = T)
+        }
+        
         mp_plt <-
           ggplot(mp_df) +
           geom_area(aes(y = est, x = year,
@@ -80,7 +87,7 @@ mod_data_processing_server <- function(id, df){
                                           group = grp,
                                           fill = grp),
                     show.legend = F) +
-          ggsci::scale_fill_material() +
+          scle +
           labs(y = df$prop_col_name(),
                x = df$time_col_name(),
                fill = df$loc_col_name()) +
@@ -110,7 +117,8 @@ mod_data_processing_server <- function(id, df){
           geom_area(aes(y = perc, x = year,
                         group = grp,
                         fill = grp)) +
-          ggsci::scale_fill_material() +
+          # ggsci::scale_fill_material() +
+          scle +
           labs(y = df$prop_col_name(),
                x = df$time_col_name(),
                fill = df$loc_col_name()) +
