@@ -24,7 +24,7 @@ body, h1,h2,h3,h4,h5,h6 {font-family: "Montserrat", sans-serif}
 <nav class="w3-sidebar w3-bar-block w3-small w3-hide-small w3-center">
   
   <!-- Avatar image in top left corner -->
-  <img src="/w3images/avatar_smoke.jpg" style="width:100%">
+  <img src="/www/creepy_horse.png" style="width:80%">
   
   <a href="#" class="w3-bar-item w3-button w3-padding-large w3-black">
     <i class="fa fa-home w3-xxlarge"></i>
@@ -46,14 +46,14 @@ body, h1,h2,h3,h4,h5,h6 {font-family: "Montserrat", sans-serif}
     <p>IMPORT</p>
   </a>
   
-  <a href="#simulate" class="w3-bar-item w3-button w3-padding-large w3-hover-black">
-    <i class="fa fa-magic w3-xxlarge"></i>
-    <p>SIMULATE</p>
+  <a href="#summarise" class="w3-bar-item w3-button w3-padding-large w3-hover-black">
+    <i class="fa fa-line-chart w3-xxlarge"></i>
+    <p>SUMMARISE</p>
   </a>
   
-  <a href="#visualize" class="w3-bar-item w3-button w3-padding-large w3-hover-black">
+    <a href="#partition" class="w3-bar-item w3-button w3-padding-large w3-hover-black">
     <i class="fa fa-line-chart w3-xxlarge"></i>
-    <p>VISUALIZE</p>
+    <p>PARTITION</p>
   </a>
   
   <a href="#export" class="w3-bar-item w3-button w3-padding-large w3-hover-black">
@@ -69,8 +69,8 @@ body, h1,h2,h3,h4,h5,h6 {font-family: "Montserrat", sans-serif}
     <a href="#" class="w3-bar-item w3-button" style="width:25% !important">HOME</a>
     <a href="#usage" class="w3-bar-item w3-button" style="width:25% !important">USAGE</a>
     <a href="#import" class="w3-bar-item w3-button" style="width:25% !important">IMPORT</a>
-    <a href="#simulate" class="w3-bar-item w3-button" style="width:25% !important">SIMULATE</a>
-    <a href="#visualize" class="w3-bar-item w3-button" style="width:25% !important">VISUALIZE</a>
+    <a href="#summarise" class="w3-bar-item w3-button" style="width:25% !important">SUMMARISE</a>
+    <a href="#partition" class="w3-bar-item w3-button" style="width:25% !important">PARTITION</a>
     <a href="#export" class="w3-bar-item w3-button" style="width:25% !important">EXPORT</a>
   </div>
 </div>
@@ -81,7 +81,7 @@ body, h1,h2,h3,h4,h5,h6 {font-family: "Montserrat", sans-serif}
   <header class="w3-container w3-padding-32 w3-center w3-black" id="home">
     <h1 class="w3-jumbo"><span class="w3-hide-small">stable.</h1>
 
-    <p>Understanding synchrony-stability relationships in complex natural systems</p>
+    <p>Understanding synchrony-stability relationships in complex hierarchical systems</p>
 
     <div style = "margin-left:3em; margin-right:3em;margin-top:0em;margin-bottom:2em;">
       <img src="./www/sync_biomass.gif" style="width:80%; height: auto;">
@@ -95,14 +95,13 @@ body, h1,h2,h3,h4,h5,h6 {font-family: "Montserrat", sans-serif}
     <hr style="width:200px" class="w3-opacity">
     <h1 class="w3-xxlarge"><span class="w3-hide-small">Background and rationale</h1>
     
-    <p>Ecosystems, like portfolios of financial assets, are complex hierarchical systems whose components fluctuate through time. These components include <i>populations or communities across multiple spatial scales</i>. For instance, we could think about how populations fluctuate locally within a community or about how communities fluctuate regionally within a metacommunity. Alternatively, species' populations fluctuating across a region form a metapopulation, and multiple metapopulations within a region together form a metacommunity.
-    </p>
+    <p>The dynamics of complex hierarchical systems, such as ecosystems or financial portfolios, are stabilized by fluctuations among system components. The amount by which the system is stabilized is related to how <i>synchronous</i> lower-level components are. If these lower-level components (e.g., populations) are perfectly correlated through time, then the dynamics of the system in aggregate (e.g., the community) will equate to the summed dynamics of all species, and no stability will be imparted.
     
-    <p>As ecosystem components fluctuate, their dynamics tend to offset. This is called <i>asynchrony</i>, and results in the dynamics of higher-level ecosystem components being less variable over time than their component parts. For example, the temporal variability of metapopulation dynamics will be reduced relative to the dynamics of its component populations due to asynchrony. The reduction in variability at aggregate levels of complexity in an ecosystem is called the <i>portfolio effect (PE)</i>. The magnitude of the PE scales with synchrony (&phi;), a measure of how correlated component dynamics are through time, where PE = 1 - &phi;.</p> 
+    These systems are <i>nested hierarchical systems</i>, meaning that higher level components (e.g., communities) are composed of lower-level components (e.g., species). Unless the temporal dynamics of lower-level components are perfectly correlated, their dynamics will tend to offset and introduce asynchrony into the system.</p>
     
-    <p>In populations or communities subjected to resource harvesting, management strategies that conserve PEs are desirable as they function as "ecological insurance". In this sense, PEs may reduce variability in the extraction of resources through time. The purpose of this tool is to aid in the visualization and understanding of PEs as they manifest at different biological and organizational levels within ecosystems.</p>
-    </div>
+    <p>Asynchrony among lower-level components will result in lower temporal variability at higher levels within the system: a <i>portfolio effect (PE).</i> To provide an example in the context of natural systems, asynchrony in the dynamics of populations over space (where "dynamics" refers to population biomass through time) will reduce variability in the dynamics of the aggregated populations, or the metapopulation. This concept is known as spatial insurance, and the reduction in variability between levels the "spatial PE".</p>
     
+    <p>The goal of {stable} is to provide access to a framework, borrowed from community ecology (Wang et. al 2019; Lamy et al. 2018), that conceptualizes and quantifies how PEs emerge in complex hierarchical systems, regardless of domain.</p>
     
    <!-- Usage Section -->
    <div class="w3-content w3-justify w3-text-grey w3-padding-64" id="usage">
@@ -110,44 +109,45 @@ body, h1,h2,h3,h4,h5,h6 {font-family: "Montserrat", sans-serif}
     <hr style="width:200px" class="w3-opacity">
     <h1 class="w3-xxlarge"><span class="w3-hide-small">Usage</h1>
     
-    <p>The functionality of {stable} reflects the idea that synchrony-stability relationships are general properties of complex systems. Therefore, it does not require that the user have data specific to ecosystem properites such as biomass or abundance. However, it is perhaps best suited to these types of data.</p>
+    <p>The functionality of {stable} reflects the idea that synchrony-stability relationships are general properties of complex hierarchical systems. Therefore, it does not require that the user have data specific to ecosystem properites such as biomass or abundance. However, the app is still in early stages of development and is best suited for these types of data.</p>
     
-    <p>Your data must be a <i>.csv file</i> with the following structure in order to use the app:
+    <p>The {stable} app determines the hierarchical structure of your data from the number of unique combinations between nested grouping variables, which are referred to as `dimensionA` and `dimensionB`. For example, if the column `dimensionA` contains multiple locations and `dimensionB` contains multiple species observed within locations, then {stable} will partition variability hierarchically into the average variability of biomass within unique combinations of `dimensionA` and `dimensionB` (populations), the average variability of total community biomass across `dimensionB` (locations), and the average variability of metapopulation biomass across `dimensionA` (species). In each case, variability is weighted by the contribution of biomass to the whole system (metacommunity) following Wang et al. 2019 and Lamy et al. 2020.</p></P>
+    
+    <p>You may instead choose to provide the app with non-spatial data representing something like a portfolio of managed resources or financial assets. In these cases, there is no second dimension to consider. When importing these types of data, simply include a column containing a single repeated grouping variable. Data must be in <i>.csv</i> format and adhere to the following structure:
     </p>
     
-    <img src="./www/data_formatting.png" style="width:50%; height: auto; align:center;">
+    <img src="./www/data_formatting.png" style="width:50%; display:block; margin-left:auto; margin-right:auto;">
     
-
+    <p>Once your data are imported, enter the column names that correspond to the two grouping dimensions, system property of interest, and time variable.</p>
     
-    <p>Once your data are properly formatted, use the import tool below to bring your data into the app. You will then be asked to associate the column names in your data to the correct variables.</p>
     </div>
     <!-- Data import section -->
     <div class="w3-content w3-justify w3-text-grey w3-padding-64" id="import">
       <h2 class="w3-text-light-grey"></h2>
       <hr style="width:200px" class="w3-opacity">
       <h1 class="w3-xxlarge"><span class="w3-hide-small">Import</h1>
-    </div>
+   
 
-        {{first}}
-
-    
-    <!-- Data simulation section -->
-    <div class="w3-content w3-justify w3-text-grey w3-padding-64" id="simulate`">
-      <h2 class="w3-text-light-grey"></h2>
-      <hr style="width:200px" class="w3-opacity">
-      <h1 class="w3-xxlarge"><span class="w3-hide-small">Simulate</h1>
+      {{first}}
       
-      In progress...
-
-    </div>
-    
+     </div>
     <!-- Visualization section -->    
-    <div class="w3-content w3-justify w3-text-grey w3-padding-64" id="visualize">
+    <div class="w3-content w3-justify w3-text-grey w3-padding-64" id="summarise">
       <h2 class="w3-text-light-grey"></h2>
       <hr style="width:200px" class="w3-opacity">
-      <h1 class="w3-xxlarge"><span class="w3-hide-small">Visualize</h1>
+      <h1 class="w3-xxlarge"><span class="w3-hide-small">Summarise</h1>
       
       {{second}}
+
+    </div>
+    
+        <!-- Variability partitioning section -->
+    <div class="w3-content w3-justify w3-text-grey w3-padding-64" id="partition">
+      <h2 class="w3-text-light-grey"></h2>
+      <hr style="width:200px" class="w3-opacity">
+      <h1 class="w3-xxlarge"><span class="w3-hide-small">Partition</h1>
+      
+      {{third}}
 
     </div>
     

@@ -12,7 +12,8 @@ app_ui <- function(request) {
     htmlTemplate(
       app_sys("app/www/template.html"), 
       first = mod_data_import_ui("data_import_1"),
-      second = mod_data_processing_ui("data_processing_1")
+      second = mod_data_processing_ui("data_processing_1"),
+      third = mod_variability_partition_ui("variability_partition_1")
       # second = mod_data_processing_ui(" mod_data_processing_ui")
     )
   )

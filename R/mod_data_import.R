@@ -38,7 +38,7 @@ mod_data_import_ui <- function(id){
   shinyjs::useShinyjs(), 
   fluidRow(
     column(4, 
-           fileInput(ns("file1"), "1. Choose CSV file:",
+           fileInput(ns("file1"), h4("1. Choose CSV file:"),
                      accept = c(
                        "text/csv",
                        "text/comma-separated-values,text/plain",
@@ -50,18 +50,18 @@ mod_data_import_ui <- function(id){
         ),
     ),
   br(),
-  shiny::h6("2. Enter column names:"),
+  shiny::h4("2. Enter column names:"),
   fluidRow(
     shinydashboard::box(width = 12,
       splitLayout(cellWidths = c("50%","50%"),
           shiny::textInput(
             ns("loc_col"),
-            HTML("Locations:<br>"),
+            HTML("dimensionA:<br>"),
             "grp"
           ),
           shiny::textInput(
             ns("spec_col"),
-            HTML("Species:<br>"),
+            HTML("dimensionB:<br>"),
             "common"
         )
       )
@@ -78,7 +78,7 @@ mod_data_import_ui <- function(id){
         ),
         shiny::textInput(
           ns("prop_col"),
-          HTML("Ecosystem property:<br>"),
+          HTML("System property:<br>"),
           "est"
          )
         )
@@ -103,12 +103,22 @@ mod_data_import_ui <- function(id){
   ),
   br(),
   fluidRow(
+    shinydashboard::box(width = 6,
+                        splitLayout(cellWidths = c("50%","50%"),
     shiny::actionButton(ns("act1"),
-                        "Enter column names", 
-                        class = "btn-success")
-  )
-    )
-  }
+                        "Process data", 
+                        class = "btn-success"),
+    shinyWidgets::progressBar(
+      ns("pb2"),
+      value = 0,
+      total = 100,
+      title = ""
+                    )
+                  )
+                )
+              )
+            )
+          }
     
 #' data_import Server Functions
 #'
@@ -165,6 +175,16 @@ mod_data_import_server <- function(id){
         
         values$long_df <- long_df
         
+      }
+    })
+    
+    observeEvent(input$act1, {
+      for (i in 1:100) {
+        shinyWidgets::updateProgressBar(
+          session = session,
+          id = "pb2",
+          value = i, total = 100
+        )
       }
     })
     

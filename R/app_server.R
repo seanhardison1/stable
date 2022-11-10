@@ -11,4 +11,6 @@ app_server <- function(input, output, session) {
   
   mod_data_processing_server("data_processing_1", df)
   
+  mod_variability_partition_server("variability_partition_1", df)
+  
 }
