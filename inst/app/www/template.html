@@ -95,11 +95,11 @@ body, h1,h2,h3,h4,h5,h6 {font-family: "Montserrat", sans-serif}
     <hr style="width:200px" class="w3-opacity">
     <h1 class="w3-xxlarge"><span class="w3-hide-small">Background and rationale</h1>
     
-    <p>The dynamics of complex hierarchical systems, such as ecosystems or financial portfolios, are stabilized by fluctuations among system components. The amount by which the system is stabilized is related to how <i>synchronous</i> lower-level components are. If these lower-level components (e.g., population biomasses or financial assets) are perfectly correlated through time, then the temporal variability of the system in aggregate will equal the weighted average variability of its lower level components, and no stability is imparted. However, when the dynamics of lower-level components offset, as is the case for real world systems, variability in the aggregate system is reduced relative to that of its component parts. 
+    <p>The dynamics of complex hierarchical systems, such as ecosystems or financial portfolios, are stabilized by fluctuations among system components. The amount by which the system is stabilized is related to how <i>synchronous</i> lower-level components are. If these lower-level components (e.g., population biomasses or financial assets) are perfectly correlated through time, then the temporal variability of the system in aggregate will equal the weighted average variability of its lower level components, and no stability is imparted. However, when the dynamics of lower-level components offset, as is the case for real world systems, variability in the aggregate system is reduced relative to that of its component parts (Link 2018). 
     
-    <p>The offsetting of lower-level components through time is also referred to as <i>asynchrony</i>, and the reduction of variability (or increase in stability) that emerges as a result of asynchrony is called the <i>portfolio effect (PE).</i> To provide an example in the context of natural systems, asynchrony in the dynamics of populations over space (where "dynamics" refers to population biomasses or abundances through time) will reduce variability in the dynamics of the aggregated populations, or the metapopulation. This concept is known as spatial insurance, and the reduction in variability between levels the "spatial PE".</p>
+    <p>The offsetting of lower-level components through time is also referred to as <i>asynchrony</i>, and the reduction of variability (or increase in stability) that emerges as a result of asynchrony is called the <i>portfolio effect (PE) (Thorson et al. 2018).</i> To provide an example in the context of natural systems, asynchrony in the dynamics of populations over space (where "dynamics" refers to population biomasses or abundances through time) will reduce variability in the dynamics of the aggregated populations, or the metapopulation. This concept is known as spatial insurance, and the reduction in variability between levels the "spatial PE".</p>
     
-    <p>The goal of {stable} is to provide access to a framework, borrowed from community ecology (Wang et. al 2019; Lamy et al. 2018), that conceptualizes and quantifies how PEs emerge in complex dynamic hierarchical systems, regardless of domain.</p>
+    <p>The goal of {stable} is to provide access to a framework, borrowed from community ecology (Wang et. al 2019; Lamy et al. 2019), that conceptualizes and quantifies how PEs emerge in complex dynamic hierarchical systems, regardless of domain.</p>
     
    <!-- Usage Section -->
    <div class="w3-content w3-justify w3-text-grey w3-padding-64" id="usage">
@@ -109,7 +109,7 @@ body, h1,h2,h3,h4,h5,h6 {font-family: "Montserrat", sans-serif}
     
     <p>The functionality of {stable} reflects the idea that synchrony-stability relationships are general properties of complex dynamics hierarchical systems. Therefore, it does not require that the user have data specific to ecosystem properites such as biomass or abundance. However, the app is still in early stages of development and is best suited for these types of data.</p>
     
-    <p>The {stable} app determines the hierarchical structure of your data from the number of unique combinations between nested grouping variables, which are referred to as `dimensionA` and `dimensionB`. For example, if the column `dimensionA` contains multiple locations and `dimensionB` contains multiple species observed within locations, then {stable} will partition variability hierarchically into the average variability of biomass within unique combinations of `dimensionA` and `dimensionB` (populations), the average variability of total community biomass across `dimensionB` (locations), and the average variability of metapopulation biomass across `dimensionA` (species). In each case, variability is weighted by the contribution of biomass to the whole system (metacommunity) following Wang et al. 2019 and Lamy et al. 2020.</p></P>
+    <p>The {stable} app determines the hierarchical structure of your data from the number of unique combinations between nested grouping variables, which are referred to as `dimensionA` and `dimensionB`. For example, if the column `dimensionA` contains multiple locations and `dimensionB` contains multiple species observed within locations, then {stable} will partition variability hierarchically into the average variability of biomass within unique combinations of `dimensionA` and `dimensionB` (populations), the average variability of total community biomass across `dimensionB` (locations), and the average variability of metapopulation biomass across `dimensionA` (species). In each case, variability is weighted by the contribution of biomass to the whole system (metacommunity) following Wang et al. 2019 and Lamy et al. 2019.</p></P>
     
     <p>You may instead choose to provide the app with non-spatial data representing something like a portfolio of managed resources or financial assets. In these cases, there is no second dimension to consider. When importing these types of data, simply include a column containing a single repeated grouping variable. Data must be in <i>.csv</i> format and adhere to the following structure:
     </p>
@@ -159,6 +159,22 @@ body, h1,h2,h3,h4,h5,h6 {font-family: "Montserrat", sans-serif}
 
     </div>
     
+    
+    <div class="w4-content w4-justify w4-text-grey w4-padding-64" id="References">
+      <h2 class="w4-text-light-grey"></h2>
+      <hr style="width:200px" class="w4-opacity">
+      <h3 class="w4-xxlarge"><span class="w4-hide-small">References</h3>
+      
+      <p>Link, Jason S. "System-level optimal yield: increased value, less risk, improved stability, and better fisheries." Canadian Journal of Fisheries and Aquatic Sciences 75.1 (2018): 1-16.</p>
+      
+      
+      <p>Thorson, James T., et al. "Spatial heterogeneity contributes more to portfolio effects than species variability in bottom-associated marine fishes." Proceedings of the Royal Society B 285.1888 (2018): 20180915.</p>
+      
+      <p>Wang, Shaopeng, et al. "Stability and synchrony across ecological hierarchies in heterogeneous metacommunities: linking theory to data." Ecography 42.6 (2019): 1200-1211.</p>
+      
+      <p>Lamy, Thomas, et al. "Species insurance trumps spatial insurance in stabilizing biomass of a marine macroalgal metacommunity." Ecology 100.7 (2019): e02719.</p>
+
+    </div>
     
 </div>
 
